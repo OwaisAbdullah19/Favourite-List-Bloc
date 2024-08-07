@@ -18,6 +18,12 @@ class FavouritelistblocBloc extends Bloc<FavouritelistblocEvent, Favouritelistbl
        favouriteitemlist = await favoutiterepository.fetchlist();
        emit(state.copyWith(favouriteitemlist: List.from(favouriteitemlist),listStatus: Liststatus.success));
     });
+
+    on<favouriteobject>((event, emit) {
+     final index = favouriteitemlist.indexWhere((test) => test.id == event.updateitem.id );
+      favouriteitemlist[index] = event.updateitem;
+       emit(state.copyWith(favouriteitemlist: List.from(favouriteitemlist),listStatus: Liststatus.success));
+    });
   }
 }
  

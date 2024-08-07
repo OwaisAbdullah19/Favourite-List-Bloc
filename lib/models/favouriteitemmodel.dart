@@ -8,7 +8,7 @@ final bool isdeleting;
 FavouriteItem({
   required this.id,
   required this.value,
-  this.isfavourite =true,
+  this.isfavourite =false,
   this.isdeleting =false,
   });
   FavouriteItem copyWith({String?id,String?value,bool?isdeleting,bool?isfavourite}){

@@ -1,7 +1,5 @@
-
-
 import 'package:favouritelistbloc/bloc/favouritelistbloc_bloc.dart';
-
+import 'package:favouritelistbloc/models/favouriteitemmodel.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -44,6 +42,14 @@ class _FavouritelistscreenState extends State<Favouritelistscreen> {
                   return Card(
                     child: ListTile(
                       title: Text(item.value.toString()),
+                      trailing: IconButton(onPressed: (){
+                FavouriteItem updateitem = FavouriteItem(id:  state.favouriteItemlist[index].id, value: item.value,  //in place of item we can use (state.favouriteitemlist[index])
+                 isfavourite: item.isfavourite ? false : true);
+                 context.read<FavouritelistblocBloc>().add(favouriteobject(updateitem: updateitem));
+
+                        
+                      }, icon: Icon(item.isfavourite ? Icons.favorite : Icons.favorite_outline)
+                    )
                     )
                   );
                 
