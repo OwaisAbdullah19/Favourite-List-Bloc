@@ -55,7 +55,7 @@ class _FavouritelistscreenState extends State<Favouritelistscreen> {
 
                        }),
                    title: Text(item.value.toString()),
-                      trailing: IconButton(onPressed: (){
+                  trailing: IconButton(onPressed: (){
                  FavouriteItem updateitem = FavouriteItem(id:  state.favouriteItemlist[index].id, value: item.value,  //in place of item we can use (state.favouriteitemlist[index])
                  isfavourite: item.isfavourite ? false : true,
                  isdeleting: item.isdeleting?true:false
