@@ -10,8 +10,8 @@ class FavouritelistblocBloc extends Bloc<FavouritelistblocEvent, Favouritelistbl
 
   Favouritelistrepository favoutiterepository;
       List <FavouriteItem> favouriteitemlist = [];
-
-
+         
+      
 
   FavouritelistblocBloc(this.favoutiterepository) : super(FavouritelistblocState()) {
     on<favouritelistfetch>((event, emit) async{
