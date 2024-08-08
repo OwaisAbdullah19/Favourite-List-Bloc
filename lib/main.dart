@@ -18,6 +18,7 @@ class MyApp extends StatelessWidget {
       create: (context) => FavouritelistblocBloc(Favouritelistrepository()),
       child: MaterialApp(
         title: 'Flutter Demo',
+        debugShowCheckedModeBanner: false,
         themeMode: ThemeMode.dark,
         theme: ThemeData(
           brightness: Brightness.dark,

@@ -7,6 +7,8 @@ class FavouritelistblocEvent extends Equatable {
   List<Object> get props => [];
 }
 class favouritelistfetch extends FavouritelistblocEvent{}
+
+
 class favouriteobject extends FavouritelistblocEvent{
  final  FavouriteItem updateitem;
  favouriteobject({required this.updateitem});
@@ -16,3 +18,6 @@ class favouriteobject extends FavouritelistblocEvent{
 
   void add(FavouriteItem updateitem) {}
 }
+
+
+class delete extends FavouritelistblocEvent{}

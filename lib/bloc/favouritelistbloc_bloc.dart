@@ -24,6 +24,16 @@ class FavouritelistblocBloc extends Bloc<FavouritelistblocEvent, Favouritelistbl
       favouriteitemlist[index] = event.updateitem;
        emit(state.copyWith(favouriteitemlist: List.from(favouriteitemlist),listStatus: Liststatus.success));
     });
+
+    on<delete>((event, emit) {
+      int index = favouriteitemlist.length;
+      for (int i = favouriteitemlist.length - 1; i >= 0; i--) {
+    if (favouriteitemlist[i].isdeleting) {
+      favouriteitemlist.removeAt(i);
+    }
+  }
+      emit(state.copyWith(favouriteitemlist: List.from(favouriteitemlist),listStatus: Liststatus.success));
+    });
   }
 }
  

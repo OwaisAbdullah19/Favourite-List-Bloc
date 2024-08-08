@@ -21,6 +21,11 @@ class _FavouritelistscreenState extends State<Favouritelistscreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        actions: [
+          IconButton(onPressed: (){
+            context.read<FavouritelistblocBloc>().add(delete());
+          }, icon: Icon(Icons.delete)),
+        ],
         title: Center(child: Text('Favourite List'),),
       ),
       body: Padding(
@@ -39,15 +44,22 @@ class _FavouritelistscreenState extends State<Favouritelistscreen> {
                   itemCount: state.favouriteItemlist.length,
                   itemBuilder: (context,index){
                     final item = state.favouriteItemlist[index];
-                   
                   return Card(
                     
                     child: ListTile(
-                    
-                      title: Text(item.value.toString()),
+                      leading: Checkbox(value: state.favouriteItemlist[index].isdeleting, onChanged: (value) {
+                      FavouriteItem updateitem1 = FavouriteItem(id:  state.favouriteItemlist[index].id, value: item.value, 
+                     isfavourite: item.isfavourite ? true : false,  //in place of item we can use (state.favouriteitemlist[index])
+                      isdeleting: item.isdeleting ? false : true);
+                       context.read<FavouritelistblocBloc>().add(favouriteobject(updateitem: updateitem1));
+
+                       }),
+                   title: Text(item.value.toString()),
                       trailing: IconButton(onPressed: (){
-                FavouriteItem updateitem = FavouriteItem(id:  state.favouriteItemlist[index].id, value: item.value,  //in place of item we can use (state.favouriteitemlist[index])
-                 isfavourite: item.isfavourite ? false : true);
+                 FavouriteItem updateitem = FavouriteItem(id:  state.favouriteItemlist[index].id, value: item.value,  //in place of item we can use (state.favouriteitemlist[index])
+                 isfavourite: item.isfavourite ? false : true,
+                 isdeleting: item.isdeleting?true:false
+                 );
                  context.read<FavouritelistblocBloc>().add(favouriteobject(updateitem: updateitem));
 
                         
@@ -56,8 +68,9 @@ class _FavouritelistscreenState extends State<Favouritelistscreen> {
                     )
                   );
                 
-            }
+                  }
                 );
+                
             }
           }
       )
